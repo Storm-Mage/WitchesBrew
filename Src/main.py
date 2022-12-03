@@ -4,7 +4,7 @@ gingerroot = 5
 ingredlist = {"water lily":1,"rose petal":3,"ginger root":5}
 potionlist = {9:"Herbal Medicine"}
 mapplaces = ["Thornwood"]
-inventory = [""]
+inventory = []
 
 def idenpotion(p):
     for key,value in potionlist.items():
@@ -33,6 +33,7 @@ if answer == "potion":
     if potion != 0:
         print("You heat the potion, stir it, then wait for the results.")
         print(idenpotion(potion))
+        inventory.append(idenpotion(potion))
     else:
         print("You decide not to brew and leave.")
 if answer == "adventure":
@@ -43,8 +44,20 @@ if answer == "adventure":
     print("Where would you like to go?")
     answer = input()
     if answer == "Thornwood":
-        print("What potion would you like to bring?")
+        print("What potion would you like to bring? You can bring:")
+        if len(inventory) == 0:
+            print("Nothing")
+        else:
+            for item in inventory:
+                print(item)
         answer = input()
-        if answer == "Herbal Medicine" and answer in inventory:
-            print("You enter the thornwood forest, use your potion, and return ")
+        if answer = "back":
+            return ""
+        elif answer == "Herbal Medicine" and answer in inventory:
+            print("You enter the thornwood forest, use your potion, and return unharmed")
+            inventory.remove(answer)
         elif answer not in inventory:
+            print("You do not have this potion!")
+        else:
+            print("You venture into the forest, but you were not equiped to handle it. You manage to escape relatively unharmed, but without your potion.")
+            inventory.remove(answer)
